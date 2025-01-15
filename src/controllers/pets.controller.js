@@ -1,6 +1,7 @@
 import PetDTO from "../dto/Pet.dto.js";
 import { petsService } from "../services/index.js"
 import __dirname from "../utils/index.js";
+import { generatePetsMocks } from "../services/mocks.service.js";
 
 const getAllPets = async(req,res)=>{
     const pets = await petsService.getAll();
@@ -43,10 +44,25 @@ const createPetWithImage = async(req,res) =>{
     const result = await petsService.create(pet);
     res.send({status:"success",payload:result})
 }
+
+const createPetsMocks = async(req,res)=>{
+
+  try {
+    //const count = req.query;
+    const count = parseInt(req.query.count, 10);
+    const result = await generatePetsMocks(count); 
+    res.send({status:"success",payload:result}); 
+  } catch (error) {
+    res.status(404).send({status:"error",error:error.message});
+  }
+
+
+} 
 export default {
     getAllPets,
     createPet,
     updatePet,
     deletePet,
-    createPetWithImage
+    createPetWithImage, 
+    createPetsMocks, 
 }

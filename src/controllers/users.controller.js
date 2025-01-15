@@ -1,4 +1,5 @@
 import { usersService } from "../services/index.js"
+import { generateUsersMocks } from "../services/mocks.service.js";
 
 const getAllUsers = async(req,res)=>{
     const users = await usersService.getAll();
@@ -27,9 +28,24 @@ const deleteUser = async(req,res) =>{
     res.send({status:"success",message:"User deleted"})
 }
 
+
+const createUsersMocks = async(req,res)=>{
+
+  try {
+    const count = parseInt(req.query.count, 10);
+    const result = await generateUsersMocks(count);
+    res.send({status:"success",payload:result}); 
+  } catch (error) {
+    res.status(404).send({status:"error",error:error.message});
+  }
+
+
+} 
+
 export default {
     deleteUser,
     getAllUsers,
     getUser,
-    updateUser
+    updateUser, 
+    createUsersMocks,
 }
