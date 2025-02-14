@@ -1,0 +1,110 @@
+components:
+  schema: 
+    User: 
+      ResponsePostUser:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: Unique identifier of the user
+          first_name:
+            type: string
+            description: Name of the user
+          last_name:
+            type: string
+          email:
+            type: string
+            description: Email of the user
+          password:
+            type: string
+            description: Password of the user
+          role:
+            type: string
+            description: Role of the user
+          pets: 
+            type: array
+            description: Pets of the user
+
+        example:
+          _id: 5f8d9f6a-d3a6-4f0f-b8a8-e8e0e9a0a0a0
+          first_name: Juan David
+          last_name: Lopez
+          email: juandavid@gmail.com
+          password: 123456
+          pets: []
+          role: user
+          createdAt: 2023-05-25T12:00:00.000Z
+      ResponseGetAllUsers:
+        type: array
+        items:
+          properties:
+          _id:
+            type: string
+            description: Unique identifier of the user
+          first_name:
+            type: string
+            description: Name of the user
+          last_name:
+            type: string
+            description: Last name of the user
+          email:
+            type: string
+            description: Email of the user
+          password:
+            type: string
+            description: Password of the user
+          role:
+            type: string
+            description: Role of the user
+          pets: 
+            type: array
+            description: Pets of the user
+
+        example:
+          - _id: 5f8d9f6a-d3a6-4f0f-b8a8-e8e0e9a0a0a0
+            first_name: Juan David
+            last_name: Lopez
+            email: juandavid@gmail.com
+            password: 123456ajkldfsdjklfs
+            role: user
+            pets: 
+              - id: 5f8d9f6a-d3a6-4f0f-b8a8-e8e0e9a0a0a0
+
+      NotFound:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Message of the error
+            example: User not found
+      BadRequest:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Message of the error
+            example: Validation error  
+      responseGetUser:
+        type: object
+        properties:
+          uid:
+            type: string
+            description: Unique identifier of the user
+          name:
+            type: string
+            description: Name of the user
+          email:
+            type: string
+            description: Email of the user
+          password:
+            type: string
+            description: Password of the user
+          role:
+            type: string
+            description: Role of the user
+          createdAt:
+            type: string
+            description: Date of creation of the user 
+          
+
+
